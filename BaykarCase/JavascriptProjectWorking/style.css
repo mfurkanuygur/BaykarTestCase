@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.question {
+    display: flex;
+    gap: 16px;
+    max-width: 500px;
+    text-align: justify;
+}
+
+#questionNumber {
+    font-weight: bolder;
+}
+
+.all-selection {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
