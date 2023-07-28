@@ -1,73 +1,117 @@
 
+
 const API = "https://jsonplaceholder.typicode.com/posts";
 
 let numberofQuestion = 1;
 let questions = [];
+let results = [];
 
-const question_number = document.getElementById("questionNumber")
-const question_text = document.getElementById("questionText")
+const question_number = document.getElementById("questionNumber");
+const question_text = document.getElementById("questionText");
 const selection_A = document.getElementById("selectionA");
 const selection_B = document.getElementById("selectionB");
 const selection_C = document.getElementById("selectionC");
 const selection_D = document.getElementById("selectionD");
+let eachQuestionTimeLeft;
+let autoNextQuestion;
 
-//Fetch questions text
 const pageUpload = async () => {
     try {
         const response = await fetch(API);
         const data = await response?.json();
-        questions = data?.slice(0, 10)
-        console.log(questions)
+        questions = data?.slice(0, 10);
         renderQuestion();
+    } catch (error) {
+        document.querySelector(".container").style = "display:none";
+        document.getElementById("error").innerHTML = error;
     }
-    catch (error) {
-        alert(error)
-    }
-}
-window.addEventListener("load", pageUpload)
-
+};
+window.addEventListener("load", pageUpload);
 
 const renderQuestion = () => {
     if (numberofQuestion < 11) {
-        question_number.innerHTML = "Q" + numberofQuestion + "."
-        question_text.innerHTML = questions[numberofQuestion - 1]?.body + "?"
+        question_number.innerHTML = "Q" + numberofQuestion + ":";
+        const firstLetterUpper = questions[numberofQuestion - 1]?.body.charAt(0).toUpperCase() + questions[numberofQuestion - 1]?.body.slice(1)
+        question_text.innerHTML = firstLetterUpper + "?";
 
-        selection_A.innerHTML = questions[numberofQuestion - 1]?.body.split(" ")[0]
-        selection_B.innerHTML = questions[numberofQuestion - 1]?.body.split(" ")[1]
-        selection_C.innerHTML = questions[numberofQuestion - 1]?.body.split(" ")[2]
-        selection_D.innerHTML = questions[numberofQuestion - 1]?.body.split(" ")[3]
+        selection_A.innerHTML =
+            "A) " + questions[numberofQuestion - 1]?.body.split(" ")[0];
+        selection_B.innerHTML =
+            "B) " + questions[numberofQuestion - 1]?.body.split(" ")[1];
+        selection_C.innerHTML =
+            "C) " + questions[numberofQuestion - 1]?.body.split(" ")[2];
+        selection_D.innerHTML =
+            "D) " + questions[numberofQuestion - 1]?.body.split(" ")[3];
 
-        const buttons = document.querySelectorAll("button")
-        buttons?.forEach(btn => btn.disabled = true)
+        const buttons = document.querySelectorAll("button");
+        buttons?.forEach((btn) => (btn.disabled = true));
 
-        buttons?.forEach(btn => btn.disabled = false)
-        buttons?.forEach(btn => btn.addEventListener("click", nextQuestion))
+        let timeLeft = 30;
+        document.getElementById("timer").innerHTML = timeLeft;
+
+        eachQuestionTimeLeft = setInterval(() => {
+            timeLeft--;
+            document.getElementById("timer").innerHTML = timeLeft;
+        }, 1000);
+
+        autoNextQuestion = setTimeout(() => {
+            clearInterval(eachQuestionTimeLeft);
+            manuelNextQuestion();
+        }, 30000);
+
+        setTimeout(() => {
+            buttons?.forEach((btn) => (btn.disabled = false));
+            buttons?.forEach((btn) =>
+                btn.addEventListener("click", takeUserAnswer)
+            );
+        }, 10000);
+    } else {
+        document.getElementById("quizSection").innerHTML = "";
+        
+        const mainTable = document.createElement("table");
+        document.querySelector(".container").appendChild(mainTable);
+        
+        const tableTr = document.createElement("tr");
+        const tableThQuestion = document.createElement("th");
+        tableThQuestion.innerText = "Questions";
+
+        const tableThAnswer = document.createElement("th");
+        tableThAnswer.innerText = "Answers";
+
+        mainTable.appendChild(tableTr);
+        tableTr.appendChild(tableThQuestion);
+        tableTr.appendChild(tableThAnswer);
+        
+        results.map((result, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td class="question-result">${"Q" + (index + 1) + ")" + result.question.charAt(0).toUpperCase() + result.question.slice(1)}?</td>
+                <td>${result.answer}</td>
+            `;
+            mainTable.appendChild(row);
+        });
     }
-    // else{
-    // alert("sonuçlar")
-    // }
+};
 
-}
-const nextQuestion = () => {
-    console.log(this.innerHTML)
+const manuelNextQuestion = () => {
+    results.push({
+        question: questions[numberofQuestion - 1]?.body,
+        answer: "Not answer",
+    });
     numberofQuestion++;
+    clearInterval(eachQuestionTimeLeft);
+    clearTimeout(autoNextQuestion);
     renderQuestion();
-}
+};
 
-// let timeoutId;
-// timeoutId = setTimeout(() => {
-//     nextQuestion();
-//     console.log("Süre doldu, bir sonraki soruya geçiliyor.");
-// }, 10000);
-
-// buttons.forEach(btn => btn.addEventListener("click", () => {
-//     clearTimeout(timeoutId); // Butona tıklandığında beklemeyi iptal et
-//     nextQuestion(); // Bir sonraki soruya geç
-// }));
-
-// // Eğer kullanıcı 10 saniyelik süre içerisinde butona tıklamazsa:
-// timeoutId = setTimeout(() => {
-//     nextQuestion();
-//     console.log("Süre doldu, bir sonraki soruya geçiliyor.");
-// }, 30000);
-
+const takeUserAnswer = (event) => {
+    const buttonText = event.target.textContent;
+    results.push({
+        question: questions[numberofQuestion - 1]?.body,
+        answer: buttonText,
+    });
+    numberofQuestion++;
+    clearInterval(eachQuestionTimeLeft);
+    clearTimeout(autoNextQuestion);
+    renderQuestion();
+};
