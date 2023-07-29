@@ -1,11 +1,4 @@
 @mixin sign-up-btn($border-color) {
-  // color: $primary;
-  // font-size: 16px;
-  // font-style: normal;
-  // font-weight: 500;
-  // line-height: 24px; /* 150% */
-  // letter-spacing: 0.5px;
-
   padding: 8px 12px;
   display: flex;
   justify-content: center;
@@ -28,47 +21,27 @@
   font-weight: $font-weight;
   line-height: $line-height;
 }
-
-//Navbar
 nav {
-  // background: var(
-  //   --linear-gradient-vertical-amber-50-to-white,
-  //   linear-gradient(180deg, #fffbeb 0%, #fff 100%)
-  // );
-  background-color: #FFFBEB;
+  background-color: #fffbeb;
   padding: 24px 80px;
-
   .navbar-brand {
-    color: $primary;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 110%;
+    @include font-specs($primary, 32px, normal, 700, 110%);
   }
   .nav-link {
-    color: $primary;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
+    @include font-specs($primary, 16px, normal, 500, 24px);
     letter-spacing: 0.5px;
     button {
       @include sign-up-btn($primary);
+      @include font-specs($primary, 16px, normal, 500, 24px);
     }
   }
 }
-
-//Main Banner Section
 .main-banner-section {
   padding: 80px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: var(
-  //   --linear-gradient-vertical-amber-50-to-white,
-  //   linear-gradient(180deg, #fffbeb 0%, #fff 100%)
-  // );
-  background-color: #FFFBEB;
+  background-color: #fffbeb;
   .main-rectangle-for-mobile {
     display: none;
   }
@@ -84,12 +57,16 @@ nav {
     }
     div {
       button:first-child {
+        @include font-specs($primary, 20px, normal, 500, 24px);
+        letter-spacing: 0.5px;
         @include sign-up-btn($primary);
       }
       button:last-child {
         img {
           margin-right: 5px;
         }
+        @include font-specs($primary, 16px, normal, 500, 24px);
+        letter-spacing: 0.5px;
         @include sign-up-btn(transparent);
       }
     }
@@ -97,10 +74,6 @@ nav {
   .col-lg-5 {
     position: relative;
     z-index: 1;
-    img {
-      // width: 486px;
-      // height: 388px;
-    }
     .main-banner-shoe-bg-square {
       width: 337px;
       height: 342px;
@@ -110,22 +83,19 @@ nav {
       gap: 10px;
       top: 50px;
       border-radius: 50px;
-      background: var(--amber-400, #fbbf24);
+      background: #fbbf24;
     }
   }
 }
-
 .three-column-section {
-  // padding: 50px 0 20px 0;
   padding: 80px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 20px;
-  //Arka plan rengi üstle aynı olmalı rengi bul
-  background-color: #FFFBEB;
+  background-color: #fffbeb;
   .main-rectangle {
     bottom: 0;
+    margin-left: 20px;
   }
   .col-lg-4 {
     position: relative;
@@ -133,7 +103,6 @@ nav {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-
     h3 {
       @include font-specs($secondary, 20px, normal, 500, 110%);
     }
@@ -156,13 +125,12 @@ nav {
     }
   }
 }
-
 .best-of-best {
   overflow-x: hidden;
   padding: 80px;
-  border-top: 1px solid var(--blue-gray-200, #e2e8f0);
-  border-bottom: 1px solid var(--blue-gray-200, #e2e8f0);
-  background: var(--blue-gray-900, $secondary);
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: $secondary;
   .bestof-header {
     margin-bottom: 80px;
     h2 {
@@ -237,7 +205,6 @@ nav {
       border: 1px solid $secondary;
       box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07),
         0px 25px 50px -12px rgba(255, 255, 255, 0.25);
-
       .card-body {
         display: flex;
         padding: 32px 32px;
@@ -264,15 +231,15 @@ nav {
 
 .join-us {
   padding: 160px 80px;
-
+  background: linear-gradient(180deg, #fffbeb 0%, #fff 100%);
   .container {
-    display: flex;
     padding: 80px;
+    display: flex;
     align-items: center;
     justify-content: center;
     align-self: stretch;
     border-radius: 30px;
-    background: var(--white, #fff);
+    background-color: #fff;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.07),
       0px 20px 25px -5px rgba(0, 0, 0, 0.1);
   }
@@ -298,7 +265,7 @@ nav {
         height: 217.934px;
         transform: rotate(-45deg);
         flex-shrink: 0;
-        background: var(--amber-200, #fde68a);
+        background: #fde68a;
         bottom: 50px;
         right: -80px;
       }
@@ -308,7 +275,7 @@ nav {
         flex-shrink: 0;
         border-radius: 50px;
         opacity: 0.75;
-        background: var(--blue-light-700, #0369a1);
+        background: #0369a1;
         top: -100px;
         right: 0;
       }
@@ -318,7 +285,7 @@ nav {
         flex-shrink: 0;
         border-radius: 30px;
         opacity: 0.75;
-        background: var(--amber-700, #b45309);
+        background: #b45309;
         left: -65px;
       }
       .fuscha {
@@ -327,7 +294,7 @@ nav {
         flex-shrink: 0;
         border-radius: 30px;
         opacity: 0.75;
-        background: var(--fuchsia-700, #a21caf);
+        background: #a21caf;
         bottom: -50px;
         right: 60px;
       }
@@ -337,7 +304,7 @@ nav {
         flex-shrink: 0;
         border-radius: 50px;
         opacity: 0.75;
-        background: var(--pink-700, #be185d);
+        background: #be185d;
         right: -120px;
         bottom: -120px;
       }
@@ -348,7 +315,7 @@ nav {
         bottom: 37px;
         border-radius: 50px;
         opacity: 0.75;
-        background: var(--green-700, #15803d);
+        background: #15803d;
         left: 20px;
         bottom: -50px;
       }
@@ -357,7 +324,6 @@ nav {
         flex-direction: column;
         align-items: center;
         padding-top: 20px;
-        //Resmi büyüttüm
         transform: scale(1.4);
       }
     }
@@ -389,10 +355,9 @@ nav {
     .slider-control {
       position: relative;
       display: flex;
-      gap: 24px;
       flex-direction: row-reverse;
-      width: 100px;
       justify-content: space-between;
+      gap: 24px;
       button {
         border-radius: 50%;
         padding: 12px;
@@ -412,13 +377,14 @@ nav {
       align-items: flex-start;
       align-self: stretch;
       border-radius: 20px;
-      border: 1px solid var(--blue-gray-200, #e2e8f0);
-      background: var(--white, #fff);
+      border: 1px solid #e2e8f0;
+      background: #fff;
       box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.07),
         0px 10px 15px -3px rgba(0, 0, 0, 0.1);
       .card-body {
         .card-logo {
           gap: 8px;
+          padding-bottom: 20px;
           h4 {
             @include font-specs(#475569, 24px, normal, 700, 110%);
             margin-top: 10px;
@@ -435,13 +401,11 @@ nav {
             align-items: start;
             h5 {
               @include font-specs(black, 18px, normal, 400, 160%);
-              padding: 0;
               margin: 0;
             }
             h6 {
               @include font-specs(#475569, 16px, normal, 400, 140%);
               margin: 0;
-              padding: 0;
             }
           }
         }
@@ -449,7 +413,6 @@ nav {
     }
   }
 }
-
 .collection {
   overflow: hidden;
   padding: 80px 0 0 0;
@@ -476,9 +439,8 @@ nav {
         padding: 0px;
         &:first-child {
           border-radius: 8px;
-          // padding: 0 16px;
           button {
-            background: var(--white, #fff);
+            background: #fff;
             box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.07),
               0px 4px 6px -1px rgba(0, 0, 0, 0.1);
             padding: 16px;
@@ -490,14 +452,12 @@ nav {
           }
         }
         button {
-          // padding: 16px;
           img {
             margin: 0 16px;
           }
         }
       }
     }
-
     .collect-three-img {
       left: -30px;
       top: -15px;
@@ -525,7 +485,6 @@ nav {
     display: none;
   }
 }
-
 .world-map {
   background-color: $primary;
   display: flex;
@@ -535,12 +494,6 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 80px;
-  .world-chart {
-    // background-image: url("../assets/chart.png");
-    // background-repeat: no-repeat;
-    // background-size: contain;
-    // background-position: center;
-  }
   h2 {
     @include font-specs(#fffbeb, 96px, normal, 800, 110%);
   }
@@ -604,11 +557,10 @@ nav {
       align-items: center;
       flex-direction: column;
       border-radius: 5px;
-      background: var(--blue-gray-200, #e2e8f0);
+      background: #e2e8f0;
       box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.07),
         0px 25px 50px -12px rgba(0, 0, 0, 0.25);
       width: 250px;
-
       p {
         margin-bottom: 0;
         @include font-specs($secondary, 14px, normal, 500, 110%);
@@ -638,17 +590,16 @@ footer {
       background-color: transparent;
       border: none;
       color: #fff;
-      .app-stores{
+      .app-stores {
         display: flex;
         flex-direction: column;
         align-items: start;
-        img{
-          margin: 5px 0 ;
+        img {
+          margin: 5px 0;
         }
       }
     }
   }
-
   .col-lg-6 {
     .all-right-reserved {
       padding: 20px 0;
@@ -662,14 +613,12 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-  nav{
+  nav {
     background-color: #fff;
   }
   .main-banner-section {
-    display: flex;
-    padding: 48px 16px;
+    padding: 48px 16px 0;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     gap: 32px;
     align-self: stretch;
@@ -706,15 +655,13 @@ footer {
       .main-banner-shoe-bg-square {
         width: 272.607px;
         height: 276.321px;
-        justify-content: center;
         left: auto;
       }
     }
   }
-
   .three-column-section {
-    padding: 80px 0;
-    background: var(--amber-100, #fef3c7);
+    padding: 40px 0;
+    background: #fef3c7;
     .main-rectangle {
       display: none;
     }
@@ -723,20 +670,150 @@ footer {
       gap: 16px;
       text-align: center;
       svg {
-        position: absolute;
         left: auto;
         margin-left: 45px;
       }
     }
   }
-
+  .best-of-best {
+    padding: 80px 0;
+    .bestof-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      align-self: stretch;
+      text-align: center;
+      h2 {
+        @include font-specs(#fff, 32px, normal, 700, 110%);
+      }
+      .col-lg-3 {
+        justify-content: center;
+      }
+    }
+    .bestof-body {
+      .col-lg-4 {
+        padding: 0 16px 48px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .pink-square {
+          left: 40px;
+          bottom: 0px;
+          img {
+            width: 202.094px;
+            height: 202.094px;
+            border-radius: 50px;
+            opacity: 0.75;
+          }
+        }
+        .blue-square {
+          top: 50px;
+          left: 280px;
+          img {
+            width: 120.063px;
+            height: 120.063px;
+            transform: rotate(90deg);
+            border-radius: 50px;
+            opacity: 0.75;
+          }
+        }
+        .orange-square {
+          display: none;
+        }
+        .purple-square {
+          left: 0px;
+          bottom: 300px;
+          img {
+            width: 150.638px;
+            height: 150.638px;
+            transform: rotate(90deg);
+            border-radius: 30px;
+            opacity: 0.75;
+          }
+        }
+        .green-square {
+          display: none;
+        }
+      }
+      .card-title {
+        @include font-specs(#fff, 24px, normal, 700, 110%);
+      }
+    }
+  }
+  .join-us {
+    padding: 160px 16px;
+    overflow-x: hidden;
+    .container {
+      padding: 32px 0px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
+    .col-lg-7 {
+      h2 {
+        text-align: center;
+        @include font-specs($secondary, 32px, normal, 700, 110%);
+      }
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        @include font-specs($secondary, 16px, normal, 400, 140%);
+      }
+      button {
+        margin: 0 auto;
+      }
+    }
+    .col-lg-5 {
+      margin: 12px 0;
+      .screen {
+        .yellow {
+          width: 411.341px;
+          height: 134.545px;
+          right: 0px;
+        }
+        .blue {
+          width: 36.425px;
+          height: 37.042px;
+          top: -25px;
+          right: 50px;
+        }
+        .brown {
+          width: 55.563px;
+          height: 55.563px;
+          left: -5px;
+          top: 50px;
+        }
+        .fuscha {
+          width: 45.685px;
+          height: 45.685px;
+          bottom: 0px;
+          right: 60px;
+        }
+        .pink {
+          width: 134.586px;
+          height: 134.586px;
+          right: -50px;
+          bottom: -70px;
+        }
+        .green {
+          width: 49px;
+          height: 50px;
+          left: 40px;
+          bottom: 0px;
+        }
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
   .love-us {
     padding: 80px 0;
     .love-us-background {
-      overflow: hidden;
       margin: 0px;
       top: 120px;
-      left: auto;
       img {
         height: 400px;
       }
@@ -765,86 +842,6 @@ footer {
       }
     }
   }
-  .join-us {
-    padding: 160px 16px;
-    overflow-x: hidden;
-    .container {
-      display: flex;
-      padding: 32px 0px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 32px;
-    }
-    .col-lg-7 {
-      h2 {
-        text-align: center;
-        @include font-specs($secondary, 32px, normal, 700, 110%);
-      }
-      li {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        @include font-specs($secondary, 16px, normal, 400, 140%);
-      }
-      button {
-        margin: 0 auto;
-      }
-    }
-    .col-lg-5 {
-      margin: 12px 0;
-      .screen {
-        .yellow {
-          width: 411.341px;
-          height: 134.545px;
-          bottom: 50px;
-          right: 0px;
-        }
-        .blue {
-          width: 36.425px;
-          height: 37.042px;
-          top: -25px;
-          right: 50px;
-        }
-        .brown {
-          width: 55.563px;
-          height: 55.563px;
-          flex-shrink: 0;
-          border-radius: 30px;
-          opacity: 0.75;
-          left: -5px;
-          top: 50px;
-        }
-        .fuscha {
-          width: 45.685px;
-          height: 45.685px;
-          bottom: 0px;
-          right: 60px;
-        }
-        .pink {
-          width: 134.586px;
-          height: 134.586px;
-          border-radius: 50px;
-          right: -50px;
-          bottom: -70px;
-        }
-        .green {
-          width: 85px;
-          height: 86px;
-          right: 445px;
-          bottom: 37px;
-          border-radius: 50px;
-          opacity: 0.75;
-          background: var(--green-700, #15803d);
-          left: 20px;
-          bottom: -50px;
-        }
-        img {
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
-
   .collection {
     padding: 0;
     .collection-header {
@@ -860,27 +857,12 @@ footer {
     .collection-body {
       padding: 0;
       ul {
-        display: flex;
         flex-direction: row;
         align-items: center;
         width: 300%;
         overflow-x: hidden;
         li {
           padding: 16px 0;
-          &:first-child {
-            border-radius: 8px;
-            button {
-              background: var(--white, #fff);
-              box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.07),
-                0px 4px 6px -1px rgba(0, 0, 0, 0.1);
-              padding: 16px;
-              img {
-                &:last-child {
-                  margin-left: 16px;
-                }
-              }
-            }
-          }
           button {
             img {
               margin: 0 16px;
@@ -888,11 +870,6 @@ footer {
           }
         }
       }
-      // .col-lg-9{
-      //   display: flex;
-      //   justify-content: center;
-      //   align-items: start;
-      // }
       .collect-three-img {
         width: 294px;
         height: 201px;
@@ -918,13 +895,11 @@ footer {
     .wave-first {
       display: none;
     }
-
     .wave-last-mobile,
     .wave-middle-mobile {
       position: absolute;
       bottom: 0;
     }
-
     .wave-first-mobile {
       position: relative;
       bottom: 0;
@@ -933,94 +908,13 @@ footer {
     .waves-mobile {
       display: block;
       position: relative;
-
       bottom: -1px;
     }
   }
-  .best-of-best {
-    padding: 80px 0;
-    .bestof-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-      align-self: stretch;
-      text-align: center;
-      h2 {
-        @include font-specs(#fff, 32px, normal, 700, 110%);
-      }
-      .col-lg-3 {
-        display: flex;
-        justify-content: center;
-      }
-      button {
-        display: flex;
-        @include sign-up-btn(#fff);
-        @include font-specs(#fff, 24px, normal, 500, 24px);
-        letter-spacing: 0.5px;
-        padding: 20px 24px;
-      }
-    }
-    .bestof-body {
-      .col-lg-4 {
-        display: flex;
-        padding: 0 16px 48px 16px;
-        flex-direction: column;
-        justify-content: center;
-        .pink-square {
-          left: 40px;
-          bottom: 0px;
-          img {
-            width: 202.094px;
-            height: 202.094px;
-            border-radius: 50px;
-            opacity: 0.75;
-          }
-        }
-        .blue-square {
-          top: 50px;
-          left: 280px;
-          img {
-            width: 120.063px;
-            height: 120.063px;
-            transform: rotate(90deg);
-            flex-shrink: 0;
-            border-radius: 50px;
-            opacity: 0.75;
-          }
-        }
-        .orange-square {
-          display: none;
-        }
-        .purple-square {
-          left: 0px;
-          bottom: 300px;
-          img {
-            width: 150.638px;
-            height: 150.638px;
-            transform: rotate(90deg);
-            flex-shrink: 0;
-            border-radius: 30px;
-            opacity: 0.75;
-          }
-        }
-        .green-square {
-          display: none;
-        }
-      }
-      .card-title {
-        @include font-specs(#fff, 24px, normal, 700, 110%);
-      }
-    }
-  }
-
   .world-map {
     overflow-x: hidden;
     padding: 80px 0;
-    background-size: cover;
-    background-position: left;
     .world-chart {
-      //  position: relative;
       left: 350px;
     }
     h2 {
@@ -1036,14 +930,13 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        .app-stores{
-          .col-lg-6{
+        .app-stores {
+          .col-lg-6 {
             display: flex;
             justify-content: center;
             align-items: center;
           }
-        } 
-      
+        }
       }
     }
     .footer-bottom {
