@@ -15,7 +15,7 @@ const selection_D = document.getElementById("selectionD");
 let eachQuestionTimeLeft;
 let autoNextQuestion;
 
-const pageUpload = async () => {
+const pageLoad = async () => {
     try {
         const response = await fetch(API);
         const data = await response?.json();
@@ -26,7 +26,7 @@ const pageUpload = async () => {
         document.getElementById("error").innerHTML = error;
     }
 };
-window.addEventListener("load", pageUpload);
+window.addEventListener("load", pageLoad);
 
 const renderQuestion = () => {
     if (numberofQuestion < 11) {
@@ -67,10 +67,10 @@ const renderQuestion = () => {
         }, 10000);
     } else {
         document.getElementById("quizSection").innerHTML = "";
-        
+
         const mainTable = document.createElement("table");
         document.querySelector(".container").appendChild(mainTable);
-        
+
         const tableTr = document.createElement("tr");
         const tableThQuestion = document.createElement("th");
         tableThQuestion.innerText = "Questions";
@@ -81,12 +81,12 @@ const renderQuestion = () => {
         mainTable.appendChild(tableTr);
         tableTr.appendChild(tableThQuestion);
         tableTr.appendChild(tableThAnswer);
-        
+
         results.map((result, index) => {
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td class="question-result">${"Q" + (index + 1) + ")" + result.question.charAt(0).toUpperCase() + result.question.slice(1)}?</td>
-                <td>${result.answer}</td>
+                <td class="answer-result">${result.answer.slice(0, 3) + result.answer.charAt(3).toUpperCase() + result.answer.slice(4)}</td>
             `;
             mainTable.appendChild(row);
         });
