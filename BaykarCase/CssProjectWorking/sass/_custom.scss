@@ -239,7 +239,7 @@ nav {
 
 .join-us {
   padding: 160px 80px;
-  background: linear-gradient(180deg, #fffbeb 0%, #fff 100%);
+  background-color: #fffbeb83;
   .container {
     padding: 80px;
     display: flex;
@@ -339,6 +339,7 @@ nav {
 }
 
 .love-us {
+  background-color: #fffbeb83;
   display: flex;
   justify-content: center;
   .love-us-background {
@@ -421,6 +422,7 @@ nav {
   }
 }
 .collection {
+  background-color: #fffbeb83;
   overflow: hidden;
   padding: 80px 0 0 0;
   display: flex;
@@ -583,7 +585,7 @@ nav {
   }
 }
 footer {
-  padding-top:20px ;
+  padding-top: 20px;
   background-color: $secondary;
   .col-lg-3 {
     display: flex;
@@ -923,7 +925,7 @@ footer {
     }
     .wave-first-mobile {
       position: relative;
-      bottom: 0;
+      bottom:0;
       overflow-x: hidden;
     }
     .waves-mobile {

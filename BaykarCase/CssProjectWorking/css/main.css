@@ -12153,7 +12153,7 @@ nav .nav-link button {
 
 .join-us {
   padding: 160px 80px;
-  background: linear-gradient(180deg, #fffbeb 0%, #fff 100%);
+  background-color: rgba(255, 251, 235, 0.5137254902);
 }
 .join-us .container {
   padding: 80px;
@@ -12266,6 +12266,7 @@ nav .nav-link button {
 }
 
 .love-us {
+  background-color: rgba(255, 251, 235, 0.5137254902);
   display: flex;
   justify-content: center;
 }
@@ -12363,6 +12364,7 @@ nav .nav-link button {
 }
 
 .collection {
+  background-color: rgba(255, 251, 235, 0.5137254902);
   overflow: hidden;
   padding: 80px 0 0 0;
   display: flex;
